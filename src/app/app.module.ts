@@ -8,9 +8,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './main/main.component';
+import { UserInfoComponent } from './main/components/user-info/user-info.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UserInfoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
