@@ -1,8 +1,14 @@
 <div class="user-info-container">
-  <mat-form-field appearance="outline" >
-    <mat-label>Standard form field</mat-label>
-    <input matInput placeholder="Placeholder" />
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
+  <mat-form-field appearance="outline">
+    <mat-label>Nimi(vapaaehtoinen)</mat-label>
+    <input matInput [formControl]="userName" />
   </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline" >
+    <mat-label>Sähköposti(vapaaehtoinen)</mat-label>
+    <input matInput [formControl]="userEmail">
+  </mat-form-field>
+</div>
+<div class="submit-button-container">
+  <button mat-flat-button color="primary" (click)="saveInfo()">Lähetä</button>
 </div>
