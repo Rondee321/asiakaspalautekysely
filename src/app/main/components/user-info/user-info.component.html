@@ -1,53 +1,86 @@
 <div class="user-info-container">
-  <mat-form-field appearance="outline">
-    <mat-label>Nimi(vapaaehtoinen)</mat-label>
-    <input matInput [formControl]="userName" />
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="outline" >
-    <mat-label>Sähköposti(vapaaehtoinen)</mat-label>
-    <input matInput [formControl]="userEmail">
-  </mat-form-field>
   <mat-stepper #stepper>
-    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+    <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
+        <ng-template matStepLabel>Syötä koirasi tiedot</ng-template>
         <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+          <mat-label>Rotu (vapaaehtoinen)</mat-label>
+          <input matInput formControlName="rotu" />
         </mat-form-field>
         <div>
-          <p>Go to a different step to see the error state</p>
-          <button mat-button matStepperNext>Next</button>
+          <mat-form-field appearance="fill">
+            <mat-label>Ikä (vapaaehtoinen)</mat-label>
+            <input matInput formControlName="ika" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label
+              >Mahdolliset aiemmat allergiat/vaivat tai vastaavat</mat-label
+            >
+            <input matInput formControlName="viat" />
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Seuraava</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+    <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your address</ng-template>
+        <ng-template matStepLabel>Palaute</ng-template>
+        <mat-form-field>
+          <mat-label
+            >Kuinka tyytyväinen olit kokemukseesi meidän kanssamme?</mat-label
+          >
+          <mat-select>
+            <mat-option *ngFor="let arvot of arvot" [value]="arvot.value">
+              {{ arvot.value }}
+            </mat-option>
+            <input matInput formControlName="eka" />
+          </mat-select>
+        </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Address</mat-label>
-          <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
-                 required>
+          <mat-label>Mitkä ovat vahvuutemme?</mat-label>
+          <input matInput formControlName="toka" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Mitä voimme parantaa?</mat-label>
+          <input matInput formControlName="kolmas" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Oliko asinointiprosessi helppo?</mat-label>
+          <input matInput formControlName="neljas" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Oliko odotusaikasi kohtuullinen?</mat-label>
+          <input matInput formControlName="viides" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Mikä sai sinut valitsemaan meidät?</mat-label>
+          <input matInput formControlName="kuudes" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label
+            >Suositteleisitko meitä ystävillesi tai kollegoillesi?</mat-label
+          >
+          <input matInput formControlName="seiska" />
         </mat-form-field>
         <div>
-          <p>Go to a different step to see the error state</p>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperPrevious>Takaisin</button>
+          <button mat-button matStepperNext>Seuraava</button>
         </div>
       </form>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+      <ng-template matStepLabel>Valmis</ng-template>
+      <p>Olet nyt valmis.</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button matStepperPrevious>Takaisin</button>
+        <button mat-flat-button color="primary" (click)="saveInfo()">
+          Lähetä
+        </button>
       </div>
     </mat-step>
   </mat-stepper>
-  
-</div>
-<div class="submit-button-container">
-  <button mat-flat-button color="primary" (click)="saveInfo()">Lähetä</button>
 </div>

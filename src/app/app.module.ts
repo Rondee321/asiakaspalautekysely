@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { UserInfoComponent } from './main/components/user-info/user-info.component';
 import { AppComponent } from './main/main.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [AppComponent, UserInfoComponent],
@@ -31,6 +32,7 @@ import { AppComponent } from './main/main.component';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent],
